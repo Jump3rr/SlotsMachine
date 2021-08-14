@@ -2,6 +2,7 @@ import { FC } from "react";
 import styled from "styled-components";
 import { TopMachine } from "./topMachine";
 import { BottomMachine } from "./bottomMachine";
+import { MainGame } from "../Game/MainGame";
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -12,18 +13,23 @@ const MainWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
 `;
-const Frame = styled.div`
+const Display = styled.div`
   height: 40vh;
   width: 90vw;
   background-color: red;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const Machine: FC = () => {
   return (
     <MainWrapper>
       <TopMachine />
-      <Frame />
+      <Display>
+        <MainGame />
+      </Display>
       <BottomMachine />
     </MainWrapper>
   );
