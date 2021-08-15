@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import * as actionTypes from "./actionTypes/slotsTypes";
-import { IItems } from "../../entities/items";
+import { IItems } from "../entities/items";
 
 export const getItems = (): Promise<any> =>
   ((dispath: Dispatch) => {
@@ -14,3 +14,7 @@ export const getItems = (): Promise<any> =>
         });
       });
   }) as any;
+
+export const shuffleItems = () => ({
+  type: actionTypes.SHUFFLE_ITEMS
+});
