@@ -4,9 +4,11 @@ export const getCredits = () => ({
   type: actionTypes.GET_CREDITS
 });
 
-export const incrementCredits = () => ({
-  type: actionTypes.INCREMENT_CREDITS
+export const incrementCredits = (bet: number) => ({
+  type: actionTypes.INCREMENT_CREDITS,
+  payload: { bet }
 });
-export const decrementCredits = () => ({
-  type: actionTypes.DECREMENT_CREDITS
+export const decrementCredits = (bet: number) => ({
+  type: actionTypes.DECREMENT_CREDITS,
+  payload: { bet }
 });

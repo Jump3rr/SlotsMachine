@@ -19,17 +19,14 @@ const MainWrapper = styled.div`
 `;
 
 export const MainGame: FC = () => {
-  const { itemsList, itemsTwoList, itemsThreeList } = useSelector<
+  const { itemsList, items2List, items3List } = useSelector<
     IState,
-    IItemsReducer & IItemsTwoReducer & IItemsThreeReducer
+    IItemsReducer
   >((globalState) => ({
-    ...globalState.items,
-    ...globalState.itemsTwo,
-    ...globalState.itemsThree
+    ...globalState.items
   }));
 
   const Spin = (first: IItems[], second: IItems[], third: IItems[]) => {
-    console.log("abc");
     return (
       <MainWrapper>
         <Slot items={first} />
@@ -39,7 +36,7 @@ export const MainGame: FC = () => {
     );
   };
   const display = useMemo(() => {
-    return Spin(itemsList, itemsTwoList, itemsThreeList);
-  }, [itemsList[0]?.id, itemsTwoList[0]?.id, itemsThreeList[0]?.id]);
+    return Spin(itemsList, items2List, items3List);
+  }, [itemsList[0]?.id, items2List[0]?.id, items3List[0]?.id]);
   return <MainWrapper>{display}</MainWrapper>;
 };

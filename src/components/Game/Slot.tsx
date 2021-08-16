@@ -47,7 +47,6 @@ export const Slot: FC<ISlot> = (props) => {
             </Column>
           </CSSTransition>
         </TransitionGroup>
-        {console.log("ab")}
       </div>
       );
     </OneSlot>

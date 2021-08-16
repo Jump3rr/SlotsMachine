@@ -6,7 +6,7 @@ import { MainGame } from "../Game/MainGame";
 import { useDispatch } from "react-redux";
 import { getItems } from "../../actions/slotsActions";
 import { getCredits } from "../../actions/creditsActions";
-import { shuffleItems } from "../../actions/slotsActions";
+import { getBet } from "../../actions/betActions";
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -29,12 +29,14 @@ const Display = styled.div`
 
 type GetItems = ReturnType<typeof getItems>;
 type GetCredits = ReturnType<typeof getCredits>;
+type GetBet = ReturnType<typeof getBet>;
 
 export const Machine: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch<GetItems>(getItems());
     dispatch<GetCredits>(getCredits());
+    dispatch<GetBet>(getBet());
   }, []);
 
   return (
