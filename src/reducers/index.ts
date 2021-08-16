@@ -1,20 +1,17 @@
 import { combineReducers } from "redux";
 
 import items, { IItemsReducer } from "./itemsReducer";
-import itemsTwo, { IItemsTwoReducer } from "./itemsTwoReducer";
-import itemsThree, { IItemsThreeReducer } from "./itemsThreeReducer";
 import credits, { ICreditsReducer } from "./creditsReducer";
+import bet, { IBetReducer } from "./betReducer";
 
 export default combineReducers({
   items,
-  itemsTwo,
-  itemsThree,
-  credits
+  credits,
+  bet
 });
 
 export interface IState {
   items: IItemsReducer;
-  itemsTwo: IItemsTwoReducer;
-  itemsThree: IItemsThreeReducer;
   credits: ICreditsReducer;
+  bet: IBetReducer;
 }

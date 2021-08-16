@@ -18,13 +18,13 @@ export default (state = defaultState(), action: any) => {
     }
     case actionTypes.INCREMENT_CREDITS: {
       return {
-        credits: state.credits + 1
+        credits: state.credits + action.payload.bet
       };
     }
     case actionTypes.DECREMENT_CREDITS: {
       return {
         ...state,
-        credits: state.credits - 1
+        credits: state.credits - action.payload.bet
       };
     }
     default: {
