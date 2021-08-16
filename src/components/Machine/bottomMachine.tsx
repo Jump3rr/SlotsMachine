@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
 import { shuffleItems } from "../../actions/slotsActions";
 import { useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ import {
 import { ICreditsReducer } from "../../reducers/creditsReducer";
 import { IBetReducer } from "../../reducers/betReducer";
 import { incrementBet, decrementBet } from "../../actions/betActions";
+import { IItemsReducer } from "../../reducers/itemsReducer";
 
 const MainWrapper = styled.div`
   height: 40vh;
@@ -44,17 +45,66 @@ export const BottomMachine: FC = () => {
   type IncrementBet = ReturnType<typeof incrementBet>;
   type DecrementBet = ReturnType<typeof decrementBet>;
 
-  const { credits, bet } = useSelector<IState, ICreditsReducer & IBetReducer>(
-    (globalState) => ({
-      ...globalState.credits,
-      ...globalState.bet
-    })
-  );
+  const { itemsList, items2List, items3List, credits, bet } = useSelector<
+    IState,
+    ICreditsReducer & IBetReducer & IItemsReducer
+  >((globalState) => ({
+    ...globalState.items,
+    ...globalState.credits,
+    ...globalState.bet
+  }));
 
-  const HandleClick = () => {
-    dispatch<ShuffleItems>(shuffleItems());
-    dispatch<DecrementCredits>(decrementCredits(bet));
+  const CheckCredits = (): boolean => {
+    return credits >= bet ? true : false;
   };
+
+  const CheckScore = (): number => {
+    let score: number = 0;
+    switch (true) {
+      case itemsList[0].id === items2List[1].id &&
+        items2List[1].id === items3List[2].id:
+        score += 1;
+        break;
+      case itemsList[1].id === items2List[1].id &&
+        items2List[1].id === items3List[1].id:
+        score += 1;
+        break;
+      case itemsList[0].id === items2List[0].id &&
+        items2List[0].id === items3List[0].id:
+        score += 1;
+        break;
+      case itemsList[2].id === items2List[2].id &&
+        items2List[2].id === items3List[2].id:
+        score += 1;
+        break;
+      case itemsList[2].id === items2List[1].id &&
+        items2List[1].id === items3List[0].id:
+        score += 1;
+        break;
+      default:
+        break;
+    }
+    return score;
+  };
+
+  const [clicked, setClicked] = useState(false);
+
+  function timeout(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function HandleClick() {
+    const hasCredits = await CheckCredits();
+    if (hasCredits && !clicked) {
+      await setClicked(true);
+      await dispatch<ShuffleItems>(shuffleItems());
+      await dispatch<DecrementCredits>(decrementCredits(bet));
+      const score = await CheckScore();
+      await dispatch<IncrementCredits>(incrementCredits(bet * score * 10));
+      await timeout(1000);
+      await setClicked(false);
+    }
+  }
 
   const HandleIncrementBet = () => {
     if (bet * 2 <= credits) {

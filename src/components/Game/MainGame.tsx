@@ -1,11 +1,9 @@
-import { FC, useEffect, useMemo } from "react";
+import { FC, useMemo } from "react";
 import styled from "styled-components";
 import { Slot } from "./Slot";
 import { IState } from "../../reducers";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { IItemsReducer } from "../../reducers/itemsReducer";
-import { IItemsTwoReducer } from "../../reducers/itemsTwoReducer";
-import { IItemsThreeReducer } from "../../reducers/itemsThreeReducer";
 import { IItems } from "../../entities/items";
 
 const MainWrapper = styled.div`
