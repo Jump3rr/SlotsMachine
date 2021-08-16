@@ -1,42 +1,55 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import styled from "styled-components";
-import items from "../../entities/items";
+import { IItems } from "../../entities/items";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const OneSlot = styled.div`
   background-color: #fff;
   width: 30%;
-  display: flex;
-  flex-direction: colunn;
+  display: block;
   overflow: hidden;
+  position: static;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  float: center;
 `;
-
-export const Slot: FC = () => {
-  function shuffle(array: string[]) {
-    var m = array.length,
-      t,
-      i;
-
-    // While there remain elements to shuffle…
-    while (m) {
-      // Pick a remaining element…
-      i = Math.floor(Math.random() * m--);
-
-      // And swap it with the current element.
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-    return array;
-  }
-  const [slot, setSlots] = useState(items);
-
-  const set = () => {
-    setSlots((prevState) => shuffle(slot));
-  };
+const Column = styled.span`
+  background-color: #fff;
+  width: 100%;
+`;
+const Item = styled.span`
+  /* margin: 0 auto; */
+  /* display: block; */
+  display: block;
+  /* width: 100%; */
+`;
+interface ISlot {
+  items: IItems[];
+}
+export const Slot: FC<ISlot> = (props) => {
   return (
     <OneSlot>
-      {slot}
-      <button onClick={() => setSlots(shuffle(slot))}>a</button>
+      <div className="items">
+        <TransitionGroup component="span">
+          <CSSTransition
+            classNames="it"
+            timeout={{ enter: 1000, exit: 1000 }}
+            key={Math.random()}
+            unmountOnExit
+          >
+            <Column className="items__value">
+              {props.items?.length > 0 &&
+                props.items.map((el) => {
+                  return <Item>{el.img}</Item>;
+                })}
+            </Column>
+          </CSSTransition>
+        </TransitionGroup>
+        {console.log("ab")}
+      </div>
+      );
     </OneSlot>
   );
 };

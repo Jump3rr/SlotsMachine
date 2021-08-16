@@ -1,8 +1,12 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import styled from "styled-components";
 import { TopMachine } from "./topMachine";
 import { BottomMachine } from "./bottomMachine";
 import { MainGame } from "../Game/MainGame";
+import { useDispatch } from "react-redux";
+import { getItems } from "../../actions/slotsActions";
+import { getCredits } from "../../actions/creditsActions";
+import { shuffleItems } from "../../actions/slotsActions";
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -23,7 +27,16 @@ const Display = styled.div`
   align-items: center;
 `;
 
+type GetItems = ReturnType<typeof getItems>;
+type GetCredits = ReturnType<typeof getCredits>;
+
 export const Machine: FC = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch<GetItems>(getItems());
+    dispatch<GetCredits>(getCredits());
+  }, []);
+
   return (
     <MainWrapper>
       <TopMachine />

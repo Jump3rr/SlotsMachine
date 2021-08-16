@@ -6,8 +6,12 @@ export const SHUFFLE_ITEMS = "SHUFFLE_ITEMS";
 export interface IItemsOneTypes {
   GET_ITEMS: {
     itemsList: IItems[];
+    itemsTwoList: IItems[];
+    itemsThreeList: IItems[];
   };
   SHUFFLE_ITEMS: {
     itemsList: IItems[];
+    itemsTwoList: IItems[];
+    itemsThreeList: IItems[];
   };
 }

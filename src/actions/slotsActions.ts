@@ -8,9 +8,13 @@ export const getItems = (): Promise<any> =>
       .then((response) => response.json())
       .then((items) => items.items)
       .then((itemsList: IItems) => {
+        const itemsTwoList = itemsList;
+        const itemsThreeList = itemsList;
         dispath({
           type: actionTypes.GET_ITEMS,
-          itemsList
+          itemsList,
+          itemsTwoList,
+          itemsThreeList
         });
       });
   }) as any;

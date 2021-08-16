@@ -32,7 +32,7 @@ export default (state = defaultState(), action: any) => {
       const paylod: actionTypes.IItemsOneTypes["GET_ITEMS"] = action;
       return {
         ...state,
-        itemsList: paylod.itemsList
+        itemsList: shuffle(paylod.itemsList)
       };
     }
     case actionTypes.SHUFFLE_ITEMS: {
