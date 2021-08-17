@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const MainWrapper = styled.div`
   height: 10vh;
@@ -17,6 +18,11 @@ const ElementOfMenu = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
+  color: #f00;
+  &:hover {
+    color: #000;
+    text-decoration: underline;
+  }
 `;
 const Footer = styled.div`
   font-style: italic;
@@ -28,8 +34,12 @@ export const TopMachine: FC = () => {
   return (
     <MainWrapper>
       <Menu>
-        <ElementOfMenu>Game</ElementOfMenu>
-        <ElementOfMenu>Score</ElementOfMenu>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <ElementOfMenu>Game</ElementOfMenu>
+        </Link>
+        <Link to="/stats" style={{ textDecoration: "none" }}>
+          <ElementOfMenu>Score</ElementOfMenu>
+        </Link>
       </Menu>
       <Footer>Made by Patryk Kamusiński</Footer>
     </MainWrapper>

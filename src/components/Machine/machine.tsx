@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import { getItems } from "../../actions/slotsActions";
 import { getCredits } from "../../actions/creditsActions";
 import { getBet } from "../../actions/betActions";
+import { getStats } from "../../actions/statsActions";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Stats } from "../Stats/Stats";
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -30,6 +33,7 @@ const Display = styled.div`
 type GetItems = ReturnType<typeof getItems>;
 type GetCredits = ReturnType<typeof getCredits>;
 type GetBet = ReturnType<typeof getBet>;
+type GetStats = ReturnType<typeof getStats>;
 
 export const Machine: FC = () => {
   const dispatch = useDispatch();
@@ -37,15 +41,25 @@ export const Machine: FC = () => {
     dispatch<GetItems>(getItems());
     dispatch<GetCredits>(getCredits());
     dispatch<GetBet>(getBet());
+    dispatch<GetStats>(getStats());
   }, []);
 
   return (
-    <MainWrapper>
-      <TopMachine />
-      <Display>
-        <MainGame />
-      </Display>
-      <BottomMachine />
-    </MainWrapper>
+    <Router>
+      <MainWrapper>
+        <TopMachine />
+        <Display>
+          <Switch>
+            <Route path="/" exact>
+              <MainGame />
+            </Route>
+            <Route path="/stats" exact>
+              <Stats />
+            </Route>
+          </Switch>
+        </Display>
+        <BottomMachine />
+      </MainWrapper>
+    </Router>
   );
 };

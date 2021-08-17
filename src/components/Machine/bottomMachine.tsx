@@ -12,12 +12,12 @@ import { ICreditsReducer } from "../../reducers/creditsReducer";
 import { IBetReducer } from "../../reducers/betReducer";
 import { incrementBet, decrementBet } from "../../actions/betActions";
 import { IItemsReducer } from "../../reducers/itemsReducer";
+import { pushStat } from "../../actions/statsActions";
 
 const MainWrapper = styled.div`
   height: 40vh;
   width: 95vw;
   background-color: #fff;
-  font-family: "Orbitron", sans-serif;
 `;
 const Settings = styled.div`
   display: flex;
@@ -44,6 +44,7 @@ export const BottomMachine: FC = () => {
   type DecrementCredits = ReturnType<typeof decrementCredits>;
   type IncrementBet = ReturnType<typeof incrementBet>;
   type DecrementBet = ReturnType<typeof decrementBet>;
+  type PushStat = ReturnType<typeof pushStat>;
 
   const { itemsList, items2List, items3List, credits, bet } = useSelector<
     IState,
@@ -101,6 +102,7 @@ export const BottomMachine: FC = () => {
       await dispatch<DecrementCredits>(decrementCredits(bet));
       const score = await CheckScore();
       await dispatch<IncrementCredits>(incrementCredits(bet * score * 10));
+      await dispatch<PushStat>(pushStat(bet * score * 10));
       await timeout(1000);
       await setClicked(false);
     }
