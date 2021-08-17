@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-
 import items, { IItemsReducer } from "./itemsReducer";
 import credits, { ICreditsReducer } from "./creditsReducer";
 import bet, { IBetReducer } from "./betReducer";

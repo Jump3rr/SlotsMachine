@@ -3,16 +3,13 @@ import styled from "styled-components";
 import { IState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { IStatsReducer } from "../../reducers/statsReducer";
+import { Colors } from "../../tools/colors";
+import { MainScreen } from "../../tools/components";
 
-const MainWrapper = styled.div`
-  height: 38vh;
-  width: 88vw;
-  background-color: #000;
-  display: flex;
+const MainWrapper = styled(MainScreen)`
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  color: #fff;
+  color: ${Colors.white};
 `;
 const StatList = styled.div`
   display: flex;
@@ -36,7 +33,7 @@ export const Stats: FC = () => {
       {stats.length > 0 &&
         stats.map((stat, index) => {
           return (
-            <StatList>
+            <StatList key={index}>
               <div>{index + 1}.</div>
               <div>{stat}</div>
             </StatList>

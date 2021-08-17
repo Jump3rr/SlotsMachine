@@ -40,7 +40,7 @@ export const Slot: FC<ISlot> = (props) => {
             <Column className="items__value">
               {props.items?.length > 0 &&
                 props.items.map((el) => {
-                  return <Item>{el.img}</Item>;
+                  return <Item key={el.id}>{el.img}</Item>;
                 })}
             </Column>
           </CSSTransition>

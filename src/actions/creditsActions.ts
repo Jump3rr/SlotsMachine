@@ -12,3 +12,6 @@ export const decrementCredits = (bet: number) => ({
   type: actionTypes.DECREMENT_CREDITS,
   payload: { bet }
 });
+export const resetCredits = () => ({
+  type: actionTypes.RESET_CREDITS
+});

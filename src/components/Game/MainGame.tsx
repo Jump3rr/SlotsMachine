@@ -5,16 +5,11 @@ import { IState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { IItemsReducer } from "../../reducers/itemsReducer";
 import { IItems } from "../../entities/items";
-import { Colors } from "../../tools/colors";
+import { MainScreen } from "../../tools/components";
 
-const MainWrapper = styled.div`
-  height: 38vh;
-  width: 88vw;
-  background-color: ${Colors.black};
+const MainWrapper = styled(MainScreen)`
   font-size: 9.2vh;
-  display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
 `;
 
 export const MainGame: FC = () => {

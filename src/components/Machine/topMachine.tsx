@@ -2,6 +2,9 @@ import { FC } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Colors } from "../../tools/colors";
+import { resetCredits } from "../../actions/creditsActions";
+import { useDispatch } from "react-redux";
+import { Buttons } from "../../tools/components";
 
 const MainWrapper = styled.div`
   height: 10vh;
@@ -14,15 +17,8 @@ const Menu = styled.div`
   align-items: center;
   height: 8vh;
 `;
-const ElementOfMenu = styled.div`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  color: ${Colors.button};
-  &:hover {
-    color: ${Colors.matrixGreen};
-    text-decoration: underline;
-  }
+const ElementOfMenu = styled(Buttons)`
+  color: ${Colors.black};
 `;
 const Footer = styled.div`
   font-style: italic;
@@ -32,14 +28,21 @@ const Footer = styled.div`
 `;
 
 export const TopMachine: FC = () => {
+  const dispatch = useDispatch();
+  type ResetCredits = ReturnType<typeof resetCredits>;
+  const HandleIncrementBet = () => {
+    dispatch<ResetCredits>(resetCredits());
+  };
+
   return (
     <MainWrapper>
       <Menu>
+        <Buttons onClick={HandleIncrementBet}>RESET</Buttons>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <ElementOfMenu>Game</ElementOfMenu>
+          <ElementOfMenu>GAME</ElementOfMenu>
         </Link>
         <Link to="/stats" style={{ textDecoration: "none" }}>
-          <ElementOfMenu>Score</ElementOfMenu>
+          <ElementOfMenu>SCORE</ElementOfMenu>
         </Link>
       </Menu>
       <Footer>Made by Patryk Kamusiński</Footer>

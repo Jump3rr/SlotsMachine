@@ -4,7 +4,7 @@ import update from "immutability-helper";
 export interface IStatsReducer {
   stats: number[];
 }
-
+const localData = localStorage.getItem("history");
 const defaultState = (): IStatsReducer => ({
   stats: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 });
@@ -15,7 +15,7 @@ export default (state = defaultState(), action: any) => {
     case actionTypes.GET_STATS: {
       return {
         ...state,
-        stats: state?.stats
+        stats: localData !== null ? JSON.parse(localData) : state.stats
       };
     }
     case actionTypes.PUSH_STATS: {
