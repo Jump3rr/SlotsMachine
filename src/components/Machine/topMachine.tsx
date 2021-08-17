@@ -1,11 +1,11 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Colors } from "../../tools/colors";
 
 const MainWrapper = styled.div`
   height: 10vh;
   width: 95vw;
-  background-color: #fff;
 `;
 const Menu = styled.div`
   display: flex;
@@ -18,9 +18,9 @@ const ElementOfMenu = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
-  color: #f00;
+  color: ${Colors.button};
   &:hover {
-    color: #000;
+    color: ${Colors.matrixGreen};
     text-decoration: underline;
   }
 `;
@@ -28,6 +28,7 @@ const Footer = styled.div`
   font-style: italic;
   display: flex;
   justify-content: flex-end;
+  color: ${Colors.matrixGreen};
 `;
 
 export const TopMachine: FC = () => {

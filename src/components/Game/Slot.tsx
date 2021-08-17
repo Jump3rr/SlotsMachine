@@ -2,9 +2,10 @@ import { FC } from "react";
 import styled from "styled-components";
 import { IItems } from "../../entities/items";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Colors } from "../../tools/colors";
 
 const OneSlot = styled.div`
-  background-color: #fff;
+  background-color: ${Colors.white};
   width: 30%;
   display: block;
   overflow: hidden;
@@ -16,14 +17,11 @@ const OneSlot = styled.div`
   float: center;
 `;
 const Column = styled.span`
-  background-color: #fff;
+  background-color: ${Colors.white};
   width: 100%;
 `;
 const Item = styled.span`
-  /* margin: 0 auto; */
-  /* display: block; */
   display: block;
-  /* width: 100%; */
 `;
 interface ISlot {
   items: IItems[];

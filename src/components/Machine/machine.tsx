@@ -10,12 +10,13 @@ import { getBet } from "../../actions/betActions";
 import { getStats } from "../../actions/statsActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Stats } from "../Stats/Stats";
+import { Colors } from "../../tools/colors";
 
 const MainWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   flex-direction: column;
-  background-color: #000;
+  background-color: ${Colors.black};
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -23,7 +24,7 @@ const MainWrapper = styled.div`
 const Display = styled.div`
   height: 40vh;
   width: 90vw;
-  background-color: red;
+  background-color: ${Colors.button};
   margin: 0 auto;
   display: flex;
   justify-content: space-around;

@@ -11,103 +11,127 @@ const defaultState = (): IItemsReducer => ({
   itemsList: [
     {
       id: 1,
-      img: "🍒"
+      img: "🍒",
+      multiply: 3
     },
     {
       id: 2,
-      img: "🍇"
+      img: "🍇",
+      multiply: 5
     },
     {
       id: 3,
-      img: "🍉"
+      img: "🍉",
+      multiply: 8
     },
     {
       id: 4,
-      img: "🍓"
+      img: "🍓",
+      multiply: 10
     },
     {
       id: 5,
-      img: "🍏"
+      img: "🍏",
+      multiply: 15
     },
     {
       id: 6,
-      img: "🍍"
+      img: "🍍",
+      multiply: 20
     },
     {
       id: 7,
-      img: "🍋"
+      img: "🍋",
+      multiply: 25
     },
     {
       id: 8,
-      img: "🏆"
+      img: "🏆",
+      multiply: 30
     }
   ],
   items2List: [
     {
       id: 1,
-      img: "🍒"
+      img: "🍒",
+      multiply: 3
     },
     {
       id: 2,
-      img: "🍇"
+      img: "🍇",
+      multiply: 5
     },
     {
       id: 3,
-      img: "🍉"
+      img: "🍉",
+      multiply: 8
     },
     {
       id: 4,
-      img: "🍓"
+      img: "🍓",
+      multiply: 10
     },
     {
       id: 5,
-      img: "🍏"
+      img: "🍏",
+      multiply: 15
     },
     {
       id: 6,
-      img: "🍍"
+      img: "🍍",
+      multiply: 20
     },
     {
       id: 7,
-      img: "🍋"
+      img: "🍋",
+      multiply: 25
     },
     {
       id: 8,
-      img: "🏆"
+      img: "🏆",
+      multiply: 30
     }
   ],
   items3List: [
     {
       id: 1,
-      img: "🍒"
+      img: "🍒",
+      multiply: 3
     },
     {
       id: 2,
-      img: "🍇"
+      img: "🍇",
+      multiply: 5
     },
     {
       id: 3,
-      img: "🍉"
+      img: "🍉",
+      multiply: 8
     },
     {
       id: 4,
-      img: "🍓"
+      img: "🍓",
+      multiply: 10
     },
     {
       id: 5,
-      img: "🍏"
+      img: "🍏",
+      multiply: 15
     },
     {
       id: 6,
-      img: "🍍"
+      img: "🍍",
+      multiply: 20
     },
     {
       id: 7,
-      img: "🍋"
+      img: "🍋",
+      multiply: 25
     },
     {
       id: 8,
-      img: "🏆"
+      img: "🏆",
+      multiply: 30
     }
   ]
 });

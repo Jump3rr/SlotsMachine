@@ -5,11 +5,12 @@ import { IState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { IItemsReducer } from "../../reducers/itemsReducer";
 import { IItems } from "../../entities/items";
+import { Colors } from "../../tools/colors";
 
 const MainWrapper = styled.div`
   height: 38vh;
   width: 88vw;
-  background-color: #000;
+  background-color: ${Colors.black};
   font-size: 9.2vh;
   display: flex;
   flex-direction: row;
