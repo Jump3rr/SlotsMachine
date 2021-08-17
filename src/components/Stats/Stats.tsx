@@ -10,6 +10,7 @@ const MainWrapper = styled(MainScreen)`
   flex-direction: column;
   align-items: center;
   color: ${Colors.white};
+  font-size: 2vh;
 `;
 const StatList = styled.div`
   display: flex;
