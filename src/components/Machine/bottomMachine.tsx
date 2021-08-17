@@ -17,7 +17,8 @@ import { pushStat } from "../../actions/statsActions";
 const MainWrapper = styled.div`
   height: 40vh;
   width: 95vw;
-  background-color: #fff;
+  background-color: #000;
+  color: #008f11;
 `;
 const Settings = styled.div`
   display: flex;
@@ -25,11 +26,28 @@ const Settings = styled.div`
   align-items: center;
   justify-content: space-around;
   height: 70%;
+  font-size: 5vh;
 `;
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  padding: 10px 20px 10px 20px;
+  background-color: #f00;
+  border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    background-color: #8f0000;
+  }
+`;
 const CreditsInfo = styled.span`
   border-style: solid;
-  border-width: 2px;
+  border-width: 0.5px;
+  border-color: #00ff00;
+  background-color: #008f11;
+  color: black;
   font-size: 7vh;
   padding: 0 20vw 0 20vw;
 `;
@@ -124,14 +142,10 @@ export const BottomMachine: FC = () => {
       <CreditsText>CREDITS:</CreditsText>
       <CreditsInfo>{credits}</CreditsInfo>
       <Settings>
-        <Buttons>
-          <button onClick={HandleIncrementBet}>+</button>
-          {bet}
-          <button onClick={HandleDecrementBet}>-</button>
-        </Buttons>
-        <Buttons>
-          <button onClick={HandleClick}>SPIN</button>
-        </Buttons>
+        <Buttons onClick={HandleIncrementBet}>+</Buttons>
+        {bet}
+        <Buttons onClick={HandleDecrementBet}>-</Buttons>
+        <Buttons onClick={HandleClick}>SPIN</Buttons>
       </Settings>
     </MainWrapper>
   );
